@@ -60,11 +60,11 @@ function App() {
     })
     .then(r => r.json())
     .then(data => {
-      setRestaurants(restaurants.filter(x => x.id !== id))
+      setReservations(reservations.filter(x => x.id !== id))
     })
   }
 
-
+console.log(reservations)
   return (
     <div className="App">
       <header className="App-header">
