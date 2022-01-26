@@ -1,22 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
+import MakeReservation from './components/makereservation'
+import {useEffect, useState} from 'react'
 
 function App() {
+
+  const [reservations, setReservations] = useState([])
+  const [restaurants, setRestaurants] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:9292/reservations')
+    .then(r => r.json())
+    .then(setReservations)
+
+    fetch('http://localhost:9292/restaurants')
+    .then(r => r.json())
+    .then(setRestaurants)
+  }, [])
+
+
+
+  const postReservation = (x) => {
+    fetch('http://localhost:9292/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(x)
+    })
+    .then(r => r.json())
+    .then(newOne => {
+      setReservations([newOne, ...reservations])
+    })
+  }
+
+  // console.log(restaurants)
+
+  // const map = resos.map(x => x.name)
+  // const resto = restaurants.map(x => x.name)
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MakeReservation postReservation={postReservation} restaurants={restaurants} />
       </header>
     </div>
   );
