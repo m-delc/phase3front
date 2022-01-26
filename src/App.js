@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import MakeReservation from './components/makereservation'
 import {useEffect, useState} from 'react'
@@ -33,11 +32,6 @@ function App() {
       setReservations([newOne, ...reservations])
     })
   }
-
-  // console.log(restaurants)
-
-  // const map = resos.map(x => x.name)
-  // const resto = restaurants.map(x => x.name)
 
 
   return (
