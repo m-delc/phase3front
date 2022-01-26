@@ -10,18 +10,20 @@ export default function MakeReservation({ postReservation, restaurants }) {
     name: "",
     time: "",
     phone_number: "",
+    party: "",
     restaurant_id: ""
   })
 
-const handleChange = (e) => {
-  setFormData({...formData, [e.target.name]:e.target.value})
-}
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value})
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     postReservation(formData)
   }
   
+  console.log(formData)
   
 
   return (
@@ -32,16 +34,17 @@ const handleChange = (e) => {
       <select name="restaurant_id" onChange={handleChange}>
         <option>Restaurants</option>
         {restaurants.map(x => (
-          <option value={x.id}>{x.name}</option>
+          <option key={x.name} value={x.id}>{x.name}</option>
         ))}
       </select>
       <select name="time" onChange={handleChange}>
         <option>Time</option>
           {times.map(x =>(
-            <option value={x.id}>{x}</option>
+            <option key={x} value={x.id}>{x}</option>
           ))}
       </select>
       <input type="text" name="name" placeholder="Whats Your Name?" value={formData.name} onChange={handleChange} />
+      <input type="text" name="party" placeholder="How many people?" value={formData.party} onChange={handleChange} />
       <input type="tel" name="phone_number" placeholder="Phone" value={formData.phone_number} onChange={handleChange} />
       <button type="submit">Submit</button>
     </form>

@@ -1,5 +1,6 @@
 import './App.css';
 import MakeReservation from './components/makereservation'
+import Card from './components/card'
 import {useEffect, useState} from 'react'
 
 function App() {
@@ -33,11 +34,42 @@ function App() {
     })
   }
 
+  const patchReservation = (x) => {
+    fetch('http://localhost:9292/reservations/${x.id}', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({...x, active: false})
+    })
+    .then(r => r.json())
+    .then(data => {
+      setReservations(reservations.map(p => {
+        if(reservations.id === data.id){
+          return data
+        } else {
+          return p
+        }
+      }))
+    })
+  } 
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:9292/reservations/${id}`, {
+      method: 'DELETE'
+    })
+    .then(r => r.json())
+    .then(data => {
+      setRestaurants(restaurants.filter(x => x.id !== id))
+    })
+  }
+
 
   return (
     <div className="App">
       <header className="App-header">
         <MakeReservation postReservation={postReservation} restaurants={restaurants} />
+        {reservations.map(r => <Card reservation={r} patchReservation={patchReservation} handleDelete={handleDelete} key={`${r.id}${r.name}`}/>)}
       </header>
     </div>
   );
