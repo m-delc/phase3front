@@ -1,4 +1,4 @@
-// import MakeReservation from './components/makeReservation'
+
 
 function Card ({ reservation, handleDelete }) {
     console.log(reservation)

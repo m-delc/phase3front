@@ -1,9 +1,9 @@
 import './App.css';
-import MakeReservation from './components/makereservation'
+import MakeReservation from './components/makereservation/makereservation'
 import {useEffect, useState} from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Header from './components/header'
-import Reviews from './components/reviews'
+import Header from './components/header/header'
+import Reviews from './components/reviews/reviews'
 
 function App() {
 

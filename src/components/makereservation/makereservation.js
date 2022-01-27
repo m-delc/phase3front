@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 // import Card from './components/card'
-import Card from './card'
+import Card from '../card/card'
 import './makereservation.css'
 
 export default function MakeReservation({ postReservation, restaurants, reservations, handleDelete }) {
