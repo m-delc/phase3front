@@ -1,4 +1,6 @@
-function Card({reservation, handleDelete}){
+// import MakeReservation from './components/makeReservation'
+
+function Card ({ reservation, handleDelete }) {
     console.log(reservation)
       return(
           <div>
@@ -12,5 +14,4 @@ function Card({reservation, handleDelete}){
           </div> 
         )
     }
-    
     export default Card;

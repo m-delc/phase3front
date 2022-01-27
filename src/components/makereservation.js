@@ -1,7 +1,9 @@
 import { React, useState } from 'react';
+// import Card from './components/card'
+import Card from './card'
 import './makereservation.css'
 
-export default function MakeReservation({ postReservation, restaurants }) {
+export default function MakeReservation({ postReservation, restaurants, reservations, handleDelete }) {
 
     const times = ["6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00"]
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -55,6 +57,7 @@ export default function MakeReservation({ postReservation, restaurants }) {
                             <input type="submit" value="Submit" />
 
                     </form>
+                    {reservations.map(r => <Card reservation={r} /* patchReservation={patchReservation} */ handleDelete={handleDelete} key={`${r.id}${r.name}`}/>)}
                 </div> 
             </div>;
 }
