@@ -1,8 +1,14 @@
 import React from 'react';
+import './header.css'
 
 export default function header() {
   return <div>
-            {/* <link href="/reviews">Restaurant Reviews</link> */}
+
+                 <div className="topnav">
+                    <a href="/reservations">Reservations</a>
+                    <a href="/reviews">Reviews</a>
+                    <a href="#about">About</a>
+                </div> 
 
   </div>;
 }
