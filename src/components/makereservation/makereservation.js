@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-// import { Link } from "react-router-dom"
 import Card from '../card/card'
 import './makereservation.css'
 
@@ -26,13 +25,10 @@ export default function MakeReservation({ postReservation, restaurants, reservat
     postReservation(formData)
     }
 
-    console.log(formData)
-    
-
     return  <div>
                 <div className="container">
                     <form action="action_page.php" onSubmit={handleSubmit}>
-                        <select name="restaurant_id" name="restaurant_id" onChange={handleChange}>
+                        <select name="restaurant_id" onChange={handleChange}>
                             <option>Restaurants</option>
                                 {restaurants.map(x => (
                                     <option key={x.name} value={x.id}>{x.name}</option>
