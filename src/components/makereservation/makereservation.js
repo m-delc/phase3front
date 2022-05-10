@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-// import Card from './components/card'
+// import { Link } from "react-router-dom"
 import Card from '../card/card'
 import './makereservation.css'
 
@@ -32,7 +32,6 @@ export default function MakeReservation({ postReservation, restaurants, reservat
     return  <div>
                 <div className="container">
                     <form action="action_page.php" onSubmit={handleSubmit}>
-
                         <select name="restaurant_id" name="restaurant_id" onChange={handleChange}>
                             <option>Restaurants</option>
                                 {restaurants.map(x => (
@@ -55,9 +54,11 @@ export default function MakeReservation({ postReservation, restaurants, reservat
                             <input type="text" name="party" placeholder="How many people?" value={formData.party} onChange={handleChange} />
                             <input type="text" name="phone_number" placeholder="Sup with your phone number?" value={formData.phone_number} onChange={handleChange} />
                             <input type="submit" value="Submit" />
-
                     </form>
-                    {reservations.map(r => <Card reservation={r} /* patchReservation={patchReservation} */ handleDelete={handleDelete} key={`${r.id}${r.name}`}/>)}
-                </div> 
+                </div>
+                
+
+                    {reservations.map(r => <Card reservation={r} handleDelete={handleDelete} key={`${r.id}${r.name}`}/>)}
+                
             </div>;
 }

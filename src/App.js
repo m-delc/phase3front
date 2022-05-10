@@ -3,7 +3,8 @@ import MakeReservation from './components/makereservation/makereservation'
 import {useEffect, useState} from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from './components/header/header'
-import Reviews from './components/reviews/reviews'
+import Restaurants from './components/restaurants/restaurants'
+
 
 function App() {
 
@@ -34,26 +35,6 @@ function App() {
     })
   }
 
-  // const patchReservation = (x) => {
-  //   fetch('http://localhost:9292/reservations/${x.id}', {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({...x, active: false})
-  //   })
-  //   .then(r => r.json())
-  //   .then(data => {
-  //     setReservations(reservations.map(p => {
-  //       if(reservations.id === data.id){
-  //         return data
-  //       } else {
-  //         return p
-  //       }
-  //     }))
-  //   })
-  // } 
-
   const handleDelete = (id) => {
     fetch(`http://localhost:9292/reservations/${id}`, {
       method: 'DELETE'
@@ -63,8 +44,6 @@ function App() {
       setReservations(reservations.filter(x => x.id !== id))
     })
   }
-
-console.log(reservations)
   return (
     <div className="App">
       <Header />
@@ -73,7 +52,8 @@ console.log(reservations)
                                                                 restaurants={restaurants} 
                                                                 reservations={reservations} 
                                                                 handleDelete={handleDelete} />} />
-          <Route path="/reviews" element={<Reviews restaurants={restaurants} />} />
+          <Route path="/restaurants" element={<Restaurants restaurants={restaurants} />} />
+          <Route path="/about" element={null} />
       </Routes>
     </div>
   );

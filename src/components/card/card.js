@@ -1,9 +1,9 @@
-
+import './card.css'
 
 function Card ({ reservation, handleDelete }) {
-    console.log(reservation)
       return(
-          <div>
+          <div className="flexbox-container">
+            <div className="flexbox-item">
             <h3>Name: {reservation.name}</h3>
             <p>Restaurant: {reservation.restaurant.name}</p>
             <p>Day: {reservation.day}</p>
@@ -11,6 +11,8 @@ function Card ({ reservation, handleDelete }) {
             <p>Party: {reservation.party}</p>
             <p>Phone Number: {reservation.phone_number}</p>
             <button onClick={() => handleDelete(reservation.id)}>Delete Reservation</button>
+
+            </div>
           </div> 
         )
     }

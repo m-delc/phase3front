@@ -1,0 +1,12 @@
+
+.flexbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flexbox-item {
+    width: 400px;
+    margin: 10px;
+    border: 3px solid #333;
+}
